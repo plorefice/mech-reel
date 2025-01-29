@@ -1,0 +1,11 @@
+[target.x86_64-unknown-linux-gnu]
+rustflags = [
+    "-Zshare-generics=y", # (Nightly) Make the current crate share its generic instantiations
+]
+
+[target.x86_64-pc-windows-msvc]
+linker = "rust-lld.exe"
+rustflags = [
+    "-Zshare-generics=off", # (Nightly) Triggers the "too many exported symbols" error
+    "-Zthreads=0",          # (Nightly) Use improved multithreading with the recommended amount of threads
+]
